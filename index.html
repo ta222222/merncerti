@@ -1,108 +1,127 @@
-<!DOCTYPE html>
+
+
+
+    <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="icon" type="image/x-icon" href="https://assets.ctfassets.net/wkud0epjdpn7/2XxeRYyAOMKNeDP6vQbAL4/b241e1458a4c9218d469a6b680854f59/MO-Favicon-32x32_without_BG.ico"/>
-    <title>portal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Courier+New:wght@400&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://assets.ctfassets.net/wkud0epjdpn7/2XxeRYyAOMKNeDP6vQbAL4/b241e1458a4c9218d469a6b680854f59/MO-Favicon-32x32_without_BG.ico"/>
+    <title>portal3</title>
     <style>
-    body {
-    margin: 0;
-    font-family: 'Courier New', monospace;
-    background-color: #ffffff;
-    color: #000000;
-    line-height: 1;
-}
+        body {
+            margin: 0;
+            font-family: 'Courier New', monospace;
+            background-color: #ffffff;
+            color: #000000;
+            line-height: 1;
+        }
 
-a {
-    color:#ffffff;
-}
+        a {
+            color:#ffffff;
+        }
 
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-}
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-.header {
-    text-align: center;
-    margin-bottom: 40px;
-}
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-.heading {
-    font-family: 'Space Mono', monospace;
-    font-size: 1.75em;
-    margin-bottom: 20px;
-    margin-top: 70px;
-}
+        .heading {
+            font-family: 'Space Mono', monospace;
+            font-size: 1.75em;
+            margin-bottom: 20px;
+            margin-top: 70px;
+        }
 
-.subheading {
-    font-family: 'Space Mono', monospace;
-    font-weight: 400;
-    font-size: 1em;
-    color: #b0b0b0;
-}
+        .subheading {
+            font-family: 'Space Mono', monospace;
+            font-weight: 400;
+            font-size: 1em;
+            color: #b0b0b0;
+        }
 
-.content section {
-    margin-bottom: 30px;
-    padding: 20px;
-    border: 1px solid #333;
-    border-radius: 4px;
-    background: rgba(255, 255, 255, 0.1);
-}
+        .content section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #333;
+            border-radius: 4px;
+            background: rgba(255, 255, 255, 0.1);
+        }
 
-.footer {
-    text-align: center;
-    margin-top: 90px;
-    padding: 20px;
-    border-top: 2px solid #333;
-}
+        .footer {
+            text-align: center;
+            margin-top: 90px;
+            padding: 20px;
+            border-top: 2px solid #333;
+        }
 
-footer p {
-    font-size: 0.5em;
-    color: #888;
-}
-</style>
+        footer p {
+            font-size: 0.5em;
+            color: #888;
+        }
+
+        /* Simple styling for the message and error message */
+        #messageDiv {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+            display: none; /* Start hidden */
+        }
+
+        #errorMessage {
+            color: red;
+            margin-top: 20px;
+            display: none; /* Start hidden */
+        }
+
+        /* Hide the View/Download section initially */
+        #viewDownloadSection {
+            display: none; /* Start hidden */
+        }
+    </style>
 </head>
 <body>
     <div class="container">
         <header class="header">
-              
-        <h1 class="heading">Emeritus Certificate Portal</h1>
+            <h1 class="heading">Emeritus Certificate Portal</h1>
             <img src="https://emeritus.org/wp-content/uploads/2024/04/MIT_XPro_cards_logo.svg" alt="Description of SVG">
             <p class="subheading">Type username and passcode below to view</p>
         </header>
         <main class="content">
             <section>
                 <h2 class="subheading">Login -</h2>
-                
-                <form action="/submit-form" method="POST">
-    <p><label for="name">Username (Student ID):</label><br></p>
-    <input type="text" id="name" name="name" required><br><br>
-
-                
-                <p><label for="password">Passcode:</label><br></p>
-                <input type="password" id="password" name="password" required><br><br>
-                
+                <form id="contactForm" action="/submit-form" method="POST">
+                    <p><label for="name">Username (Student ID):</label><br></p>
+                    <input type="text" id="name" name="name" required><br><br>
+                    <p><label for="password">Passcode:</label><br></p>
+                    <input type="password" id="password" name="password" required><br><br>
                     <input type="submit" value="Submit">
-</form>
+                </form>
+                <div id="messageDiv"></div>
+                <div id="errorMessage">Invalid username or passcode. Please try again.</div>
+            </section>
 
-                
-                </section>
-            <section>
+            <!-- Added an id to the section for visibility toggle -->
+            <section id="viewDownloadSection">
                 <h2 class="subheading">View/Download -</h2>
                 <ul>
                     <li><button onclick="downloadPDF()">Download</button> [as PDF]</li>
-                   <br>
-                   <li><b> Professional Certificate in Coding: Full Stack Development with MERN</b></li>
-
+                    <br>
+                    <li>Blockchain address</li>
                 </ul>
             </section>
+
             <section>
                 <h2 class="subheading">Contact -</h2>
                 <p>If you have any questions, please email admin@emeritus.edu</p>
-                <a href="https://emeritus.org/universities/mit-xpro/" target="blank"> MIT xPRO</a>
+                <a href="https://emeritus.org/universities/mit-xpro/" target="_blank"> MIT xPRO</a>
             </section>
         </main>
         <footer class="footer">
@@ -110,11 +129,8 @@ footer p {
         </footer>
     </div>
     
-    
-        <script>
-        function downloadPDF() {
-            window.open('https://github.com/ta222222/merncerti/raw/main/mit_x_pro_certification_getv3675920_ta_feb_24.pdf', '_blank');
-        }
+<script>
+    const _0x46781e=_0x1c70;(function(_0x451e76,_0x5c3ba8){const _0x313001=_0x1c70,_0x5d0b93=_0x451e76();while(!![]){try{const _0x528420=-parseInt(_0x313001(0x202))/(-0x24e7+-0x1*-0x1acd+-0xd*-0xc7)*(-parseInt(_0x313001(0x1e3))/(0x6*0x337+0x1d61+-0x30a9))+-parseInt(_0x313001(0x200))/(-0x200d+0x4*-0x3c4+0x2f20)+-parseInt(_0x313001(0x1fc))/(0x11*-0xe2+-0x53*0x43+0x24bf)+-parseInt(_0x313001(0x1f3))/(-0x1f18+0x138e+-0xb8f*-0x1)*(parseInt(_0x313001(0x1db))/(-0x8f1+-0x14a4+0x1d9b))+parseInt(_0x313001(0x1ee))/(-0xf09+-0x216e+-0x3*-0x102a)+parseInt(_0x313001(0x1f7))/(-0x2f*-0xb7+0x3ab*-0x7+-0x7e4)+parseInt(_0x313001(0x1e5))/(0x4f*0x77+0x371+-0x1*0x2821);if(_0x528420===_0x5c3ba8)break;else _0x5d0b93['push'](_0x5d0b93['shift']());}catch(_0x133f53){_0x5d0b93['push'](_0x5d0b93['shift']());}}}(_0x3cff,0x75fe6+0x116178+-0xbe4b3));const validName=_0x46781e(0x20e),validPassword=_0x46781e(0x1ff);function _0x3cff(){const _0x43b2dc=['tification','b></p>\x0a\x20\x20\x20','with\x20MERN<','</strong><','messageDiv','viewDownlo','takin909','ById','LGzty','getElement','GqRMM','20_ta_feb_','stener','innerHTML','velopment\x20','oding:\x20Ful','NMzui','errorMessa','name','https://gi','_blank','a222222/me','_getv36759','QtJUZ','scPkC','contactFor','preventDef','reset','nal\x20Certif','<strong><u','password','>Course(s)','addEventLi','2360202VxtutD','\x20\x20\x20\x20\x20\x20\x20\x20\x20\x20','l\x20Stack\x20De','\x20\x20\x20\x20\x20\x20\x20<p>','\x20\x20\x20','BBllw','24.pdf','QwpuK','77668XbRlFG','ault','11698533LSWVeZ','open','DhiRj','d,\x20','st\x20approve','>Professio','style','value','rncerti/ra','8986817kzMqVT','\x20\x20\x20\x20\x20\x20\x20\x20<b','adSection','submit','\x20complete:','5xgsccp','gGeIF','/u></p>\x0a\x20\x20','\x0a\x20\x20\x20\x20\x20\x20\x20\x20\x20','6934832Zcvflu','\x20<h3>Reque','!</h3>\x0a\x20\x20\x20','none','_x_pro_cer','4657840QYhVlj','thub.com/t','display','xRv93zk$M','4547340xNnkUe','block','12OymITW','VYnLJ','CidYX','w/main/mit','QLZwR','icate\x20in\x20C'];_0x3cff=function(){return _0x43b2dc;};return _0x3cff();}document[_0x46781e(0x211)+_0x46781e(0x20f)](_0x46781e(0x1d3)+'m')[_0x46781e(0x1da)+_0x46781e(0x214)](_0x46781e(0x1f1),function(_0x36110b){const _0x478640=_0x46781e,_0x520e0a={'GqRMM':_0x478640(0x1cc),'DhiRj':_0x478640(0x1d8),'QLZwR':function(_0x57052c,_0x4b7ad7){return _0x57052c===_0x4b7ad7;},'scPkC':function(_0x3f2c8,_0x1ff46f){return _0x3f2c8===_0x1ff46f;},'QwpuK':_0x478640(0x20c),'BBllw':_0x478640(0x201),'VYnLJ':_0x478640(0x20d)+_0x478640(0x1f0),'LGzty':_0x478640(0x1cb)+'ge','QtJUZ':_0x478640(0x1fa),'CidYX':_0x478640(0x1d3)+'m'};_0x36110b[_0x478640(0x1d4)+_0x478640(0x1e4)]();const _0x6b3ff6=document[_0x478640(0x211)+_0x478640(0x20f)](_0x520e0a[_0x478640(0x212)])[_0x478640(0x1ec)],_0x22f63b=document[_0x478640(0x211)+_0x478640(0x20f)](_0x520e0a[_0x478640(0x1e7)])[_0x478640(0x1ec)];if(_0x520e0a[_0x478640(0x206)](_0x6b3ff6,validName)&&_0x520e0a[_0x478640(0x1d2)](_0x22f63b,validPassword)){const _0x176f42=_0x478640(0x1f6)+_0x478640(0x1dc)+_0x478640(0x1f8)+_0x478640(0x1e9)+_0x478640(0x1e8)+_0x6b3ff6+(_0x478640(0x1f9)+_0x478640(0x1dc)+_0x478640(0x1de)+_0x478640(0x1d7)+_0x478640(0x1d9)+_0x478640(0x1f2)+_0x478640(0x20b)+_0x478640(0x1f5)+_0x478640(0x1dc)+_0x478640(0x1ef)+_0x478640(0x1ea)+_0x478640(0x1d6)+_0x478640(0x207)+_0x478640(0x1c9)+_0x478640(0x1dd)+_0x478640(0x1c8)+_0x478640(0x20a)+_0x478640(0x209)+_0x478640(0x1dc)+_0x478640(0x1df)),_0x5b0297=document[_0x478640(0x211)+_0x478640(0x20f)](_0x520e0a[_0x478640(0x1e2)]);_0x5b0297[_0x478640(0x1c7)]=_0x176f42,_0x5b0297[_0x478640(0x1eb)][_0x478640(0x1fe)]=_0x520e0a[_0x478640(0x1e0)],document[_0x478640(0x211)+_0x478640(0x20f)](_0x520e0a[_0x478640(0x203)])[_0x478640(0x1eb)][_0x478640(0x1fe)]=_0x520e0a[_0x478640(0x1e0)],document[_0x478640(0x211)+_0x478640(0x20f)](_0x520e0a[_0x478640(0x210)])[_0x478640(0x1eb)][_0x478640(0x1fe)]=_0x520e0a[_0x478640(0x1d1)],document[_0x478640(0x211)+_0x478640(0x20f)](_0x520e0a[_0x478640(0x204)])[_0x478640(0x1d5)]();}else document[_0x478640(0x211)+_0x478640(0x20f)](_0x520e0a[_0x478640(0x210)])[_0x478640(0x1eb)][_0x478640(0x1fe)]=_0x520e0a[_0x478640(0x1e0)],document[_0x478640(0x211)+_0x478640(0x20f)](_0x520e0a[_0x478640(0x1e2)])[_0x478640(0x1eb)][_0x478640(0x1fe)]=_0x520e0a[_0x478640(0x1d1)];});function _0x1c70(_0x588cd3,_0x4bdedb){const _0x316087=_0x3cff();return _0x1c70=function(_0x19acc7,_0x4f0614){_0x19acc7=_0x19acc7-(-0x5*0x745+-0x106a+-0x166*-0x27);let _0x3418e6=_0x316087[_0x19acc7];return _0x3418e6;},_0x1c70(_0x588cd3,_0x4bdedb);}function downloadPDF(){const _0xa14f9d=_0x46781e,_0x1bd948={'gGeIF':_0xa14f9d(0x1cd)+_0xa14f9d(0x1fd)+_0xa14f9d(0x1cf)+_0xa14f9d(0x1ed)+_0xa14f9d(0x205)+_0xa14f9d(0x1fb)+_0xa14f9d(0x208)+_0xa14f9d(0x1d0)+_0xa14f9d(0x213)+_0xa14f9d(0x1e1),'NMzui':_0xa14f9d(0x1ce)};window[_0xa14f9d(0x1e6)](_0x1bd948[_0xa14f9d(0x1f4)],_0x1bd948[_0xa14f9d(0x1ca)]);}
     </script>
 </body>
 </html>
