@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/x-icon" href="https://assets.ctfassets.net/wkud0epjdpn7/2XxeRYyAOMKNeDP6vQbAL4/b241e1458a4c9218d469a6b680854f59/MO-Favicon-32x32_without_BG.ico"/>
+    <title>portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Courier+New:wght@400&display=swap" rel="stylesheet">
+    <style>
+    body {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    background-color: #ffffff;
+    color: #000000;
+    line-height: 1;
+}
+
+a {
+    color:#ffffff;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.heading {
+    font-family: 'Space Mono', monospace;
+    font-size: 1.75em;
+    margin-bottom: 20px;
+    margin-top: 70px;
+}
+
+.subheading {
+    font-family: 'Space Mono', monospace;
+    font-weight: 400;
+    font-size: 1em;
+    color: #b0b0b0;
+}
+
+.content section {
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.footer {
+    text-align: center;
+    margin-top: 90px;
+    padding: 20px;
+    border-top: 2px solid #333;
+}
+
+footer p {
+    font-size: 0.5em;
+    color: #888;
+}
+</style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+              
+        <h1 class="heading">Emeritus Certificate Portal</h1>
+            <img src="https://emeritus.org/wp-content/uploads/2024/04/MIT_XPro_cards_logo.svg" alt="Description of SVG">
+            <p class="subheading">Type username and passcode below to view</p>
+        </header>
+        <main class="content">
+            <section>
+                <h2 class="subheading">Login -</h2>
+                
+                <form action="/submit-form" method="POST">
+    <p><label for="name">Username (Student ID):</label><br></p>
+    <input type="text" id="name" name="name" required><br><br>
+
+                
+                <p><label for="password">Passcode:</label><br></p>
+                <input type="password" id="password" name="password" required><br><br>
+                
+                    <input type="submit" value="Submit">
+</form>
+
+                
+                </section>
+            <section>
+                <h2 class="subheading">View/Download -</h2>
+                <ul>
+                    <li><button onclick="downloadPDF()">Download</button> [as PDF]</li>
+                   <br>
+                   <li><b> Professional Certificate in Coding: Full Stack Development with MERN</b></li>
+
+                </ul>
+            </section>
+            <section>
+                <h2 class="subheading">Contact -</h2>
+                <p>If you have any questions, please email admin@emeritus.edu</p>
+                <a href="https://emeritus.org/universities/mit-xpro/" target="blank"> MIT xPRO</a>
+            </section>
+        </main>
+        <footer class="footer">
+            <p>&copy; 2025 MIT xPRO & Emeritus. All rights reserved.</p>
+        </footer>
+    </div>
+    
+    
+        <script>
+        function downloadPDF() {
+            window.open('https://github.com/ta222222/merncerti/raw/main/mit_x_pro_certification_getv3675920_ta_feb_24.pdf', '_blank');
+        }
+    </script>
+</body>
+</html>
